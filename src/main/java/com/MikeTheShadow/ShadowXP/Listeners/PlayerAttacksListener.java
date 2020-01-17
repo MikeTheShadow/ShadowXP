@@ -14,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerAttacksListener implements Listener
 {
@@ -35,10 +34,10 @@ public class PlayerAttacksListener implements Listener
         //END OF WORLDGUARD BS
         Player att = (Player) event.getDamager();
         Player def = (Player) event.getEntity();
-        CustomUser attacker = DBHandler.GetUserByID(att.getUniqueId().toString());
-        CustomUser defender = DBHandler.GetUserByID(def.getUniqueId().toString());
+        CustomUser attacker = DBHandler.getUserByID(att.getUniqueId().toString());
+        CustomUser defender = DBHandler.getUserByID(def.getUniqueId().toString());
         //make sure they're not dueling. If they are we don't care
-        if(PlayersInDuel(att,def)) return;
+        if(playersInDuel(att,def)) return;
         if(Math.abs(attacker.getLevel() - defender.getLevel()) >= levelDif)
         {
             att.sendMessage(ShadowXP.config.getString("settings.attackMessage"));
@@ -46,7 +45,7 @@ public class PlayerAttacksListener implements Listener
             event.setCancelled(true);
         }
     }
-    public boolean PlayersInDuel(Player attacker, Player defender)
+    public boolean playersInDuel(Player attacker, Player defender)
     {
         Arena arena = ShadowXP.duelsApi.getArenaManager().get(attacker);
         if(arena == null) return false;

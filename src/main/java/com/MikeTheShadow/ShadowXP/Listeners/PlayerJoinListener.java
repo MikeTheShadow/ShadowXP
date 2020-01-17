@@ -14,11 +14,11 @@ public class PlayerJoinListener implements Listener
     {
         Player player = event.getPlayer();
         //Add player to database if they don't exist
-        CustomUser user = DBHandler.GetUserByID(player.getUniqueId().toString());
+        CustomUser user = DBHandler.getUserByID(player.getUniqueId().toString());
         if(user == null)
         {
-            DBHandler.InsertNewUser(player.getName(),player.getUniqueId().toString(),1,0,0);
-            user = DBHandler.GetUserByID(player.getUniqueId().toString());
+            DBHandler.insertNewUser(player.getName(),player.getUniqueId().toString(),1,0,0);
+            user = DBHandler.getUserByID(player.getUniqueId().toString());
         }
         player.setLevel(user.getLevel() + 1);
         player.setLevel(user.getLevel());

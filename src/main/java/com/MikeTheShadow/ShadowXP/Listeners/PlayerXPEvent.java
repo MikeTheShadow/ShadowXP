@@ -17,7 +17,7 @@ public class PlayerXPEvent implements Listener
     public void playerGainsXPEvent(PlayerExpChangeEvent event)
     {
         Player player = event.getPlayer();
-        CustomUser user = DBHandler.GetUserByID(player.getUniqueId().toString());
+        CustomUser user = DBHandler.getUserByID(player.getUniqueId().toString());
         if(user == null) { Bukkit.getConsoleSender().sendMessage("Error! Cannot get user: " + player.getName());return; }
         Json config = ShadowXP.config;
         int amount = event.getAmount();
@@ -55,7 +55,7 @@ public class PlayerXPEvent implements Listener
             }
         }
         //update user
-        DBHandler.UpdateCustomUser(user);
+        DBHandler.updateCustomUser(user);
     }
 
 }

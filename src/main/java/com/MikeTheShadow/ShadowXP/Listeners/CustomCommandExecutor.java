@@ -33,12 +33,12 @@ public class CustomCommandExecutor implements CommandExecutor
             Player player = (Player) sender;
             if(args.length == 0)
             {
-                user = DBHandler.GetUserByID(player.getUniqueId().toString());
+                user = DBHandler.getUserByID(player.getUniqueId().toString());
             }
             else
             {
                 OfflinePlayer offPlayer = Bukkit.getServer().getOfflinePlayer(args[0]);
-                user = DBHandler.GetUserByID(offPlayer.getUniqueId().toString());
+                user = DBHandler.getUserByID(offPlayer.getUniqueId().toString());
             }
             if(user == null)
             {
@@ -77,7 +77,7 @@ public class CustomCommandExecutor implements CommandExecutor
             if(args.length > 0)return false;
             CustomUser user = null;
             Player player = (Player) sender;
-            user = DBHandler.GetUserByID(player.getUniqueId().toString());
+            user = DBHandler.getUserByID(player.getUniqueId().toString());
             StringBuilder builder = new StringBuilder();
             //open stats
             builder.append("\n").append(StringUtils.repeat("§5~",20)).append("\n");
@@ -103,7 +103,7 @@ public class CustomCommandExecutor implements CommandExecutor
         }
         else if (cmd.getName().equalsIgnoreCase("fixexperience"))
         {
-            List<CustomUser> customUsers = DBHandler.GetAllUsers();
+            List<CustomUser> customUsers = DBHandler.getAllUsers();
             ShadowXP.config.update();
             for (CustomUser user: customUsers)
             {
@@ -117,7 +117,7 @@ public class CustomCommandExecutor implements CommandExecutor
             Player target = (Bukkit.getServer().getPlayer(args[0]));
             if (target != null)
             {
-                CustomUser user = DBHandler.GetUserByID(target.getUniqueId().toString());
+                CustomUser user = DBHandler.getUserByID(target.getUniqueId().toString());
                 user.setTotalXP(Integer.parseInt(args[1]));
                 target.setLevel(updateServerUser(user));
                 return true;
@@ -125,7 +125,7 @@ public class CustomCommandExecutor implements CommandExecutor
             else
             {
                 OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[0]);
-                CustomUser user = DBHandler.GetUserByID(offPlayer.getUniqueId().toString());
+                CustomUser user = DBHandler.getUserByID(offPlayer.getUniqueId().toString());
                 user.setTotalXP(Integer.parseInt(args[1]));
                 updateServerUser(user);
             }
@@ -150,7 +150,7 @@ public class CustomCommandExecutor implements CommandExecutor
                 isOnline = true;
             }
             else { ID = Bukkit.getOfflinePlayer(args[0]).getUniqueId().toString(); }
-            CustomUser user = DBHandler.GetUserByID(ID);
+            CustomUser user = DBHandler.getUserByID(ID);
             updateUserLevel(user,Integer.parseInt(args[1]),isOnline);
             return true;
         }
@@ -160,7 +160,7 @@ public class CustomCommandExecutor implements CommandExecutor
             if(warnUser(args,sender)) return false;
 
             Player target = (Bukkit.getServer().getPlayer(args[0]));
-            CustomUser user = DBHandler.GetUserByID(target.getUniqueId().toString());
+            CustomUser user = DBHandler.getUserByID(target.getUniqueId().toString());
             try
             {
                 int xpToAdd = Integer.parseInt(args[1]);
@@ -206,7 +206,7 @@ public class CustomCommandExecutor implements CommandExecutor
         }
         user.setTotalXP(finalXP);
         updateServerUser(user);
-        DBHandler.UpdateCustomUser(user);
+        DBHandler.updateCustomUser(user);
         if(isOnline)
         {
             Bukkit.getServer().getPlayer(user.getName()).setLevel(user.getLevel());
@@ -237,7 +237,7 @@ public class CustomCommandExecutor implements CommandExecutor
             level++;
             levelXP = config.getInt("levels." + level);
         }
-        DBHandler.UpdateCustomUser(user);
+        DBHandler.updateCustomUser(user);
         Player target = (Bukkit.getServer().getPlayer(user.getName()));
         if(target != null)
         {
@@ -271,7 +271,7 @@ public class CustomCommandExecutor implements CommandExecutor
             level++;
             levelXP = config.getInt("levels." + level);
         }
-        DBHandler.UpdateCustomUser(user);
+        DBHandler.updateCustomUser(user);
         Player target = (Bukkit.getServer().getPlayer(user.getName()));
         if(target != null)
         {

@@ -43,8 +43,8 @@ public class ShadowXP extends JavaPlugin
         config.setDefault("settings.attackMessage", "§6The level difference is too high!");
         config.setDefault("settings.levelDifference", 5);
         DBName = config.getString("settings.DatabaseName")+ ".sqlite";
-        DBHandler.CreateDatabase();
-        DBHandler.CreateUserTable();
+        DBHandler.createDatabase();
+        DBHandler.createUserTable();
 
         //register listeners
         PluginManager pluginManager = Bukkit.getServer().getPluginManager();

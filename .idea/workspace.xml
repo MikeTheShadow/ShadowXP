@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa4fce20-f0ac-4eca-93ae-23dd2679f856" name="Default Changelist" comment="" />
+    <list default="true" id="fa4fce20-f0ac-4eca-93ae-23dd2679f856" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/CustomCommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/CustomCommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerAttacksListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerAttacksListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerJoinListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerXPEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerXPEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/ShadowXP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/ShadowXP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Util/DBHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Util/DBHandler.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +109,19 @@
       <option name="presentableId" value="Default" />
       <updated>1578109826804</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated naming convention">
+      <created>1579242815670</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579242815670</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated naming convention" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated naming convention" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="377" key="#Project_Structure" timestamp="1578110012950">
@@ -120,6 +140,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="950" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579242772097" />
+    <state x="912" y="315" key="CommitChangelistDialog2" timestamp="1579242815110">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="912" y="315" key="CommitChangelistDialog2/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579242815110" />
     <state x="979" y="460" key="FileChooserDialogImpl" timestamp="1579218930129">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DBHandler
 {
-    public static void CreateDatabase()
+    public static void createDatabase()
     {
         File db = new File(ShadowXP.getPlugin(ShadowXP.class).getDataFolder() + "\\" + ShadowXP.DBName);
         if(db.exists())
@@ -53,7 +53,7 @@ public class DBHandler
         return null;
     }
 
-    public static void CreateUserTable()
+    public static void createUserTable()
     {
         // SQLite connection string
         String url = "jdbc:sqlite:" + ShadowXP.getPlugin(ShadowXP.class).getDataFolder() + "\\" + ShadowXP.DBName;
@@ -78,7 +78,7 @@ public class DBHandler
             Bukkit.getConsoleSender().sendMessage(e.getMessage());
         }
     }
-    public static void InsertNewUser(String name, String UID, int level,int currentXP,int totalXP)
+    public static void insertNewUser(String name, String UID, int level, int currentXP, int totalXP)
     {
         String sql = "INSERT INTO Users(name,UID,level,currentXP,totalXP) VALUES(?,?,?,?,?)";
         try (Connection conn = connect();
@@ -97,7 +97,7 @@ public class DBHandler
         }
     }
 
-    public static CustomUser GetUserByID(String UUID)
+    public static CustomUser getUserByID(String UUID)
     {
         String sql = "SELECT name,UID,level,currentXP,totalXP "
                 + "FROM Users WHERE UID = ?";
@@ -122,7 +122,7 @@ public class DBHandler
         }
         return null;
     }
-    public static void UpdateCustomUser(CustomUser user)
+    public static void updateCustomUser(CustomUser user)
     {
         String sql = "UPDATE Users SET level = ? , "
                 + "currentXP = ? ,"
@@ -146,7 +146,7 @@ public class DBHandler
             Bukkit.getConsoleSender().sendMessage("Error! " + e.getMessage());
         }
     }
-    public static List<CustomUser> GetAllUsers()
+    public static List<CustomUser> getAllUsers()
     {
         String sql = "SELECT name,UID,level,currentXP,totalXP "
                 + "FROM Users";
