@@ -1,0 +1,8 @@
+com\MikeTheShadow\ShadowXP\Listeners\PlayerAttacksListener.class
+com\MikeTheShadow\ShadowXP\ShadowXP.class
+com\MikeTheShadow\ShadowXP\Util\CustomUser.class
+com\MikeTheShadow\ShadowXP\Listeners\PlayerJoinListener.class
+com\MikeTheShadow\ShadowXP\Util\XPBoostExpansion.class
+com\MikeTheShadow\ShadowXP\Listeners\CustomCommandExecutor.class
+com\MikeTheShadow\ShadowXP\Listeners\PlayerXPEvent.class
+com\MikeTheShadow\ShadowXP\Util\DBHandler.class
