@@ -14,7 +14,7 @@ public class PlayerXPEvent implements Listener
 {
 
     @EventHandler
-    public void PlayerGainsXPEvent(PlayerExpChangeEvent event)
+    public void playerGainsXPEvent(PlayerExpChangeEvent event)
     {
         Player player = event.getPlayer();
         CustomUser user = DBHandler.GetUserByID(player.getUniqueId().toString());

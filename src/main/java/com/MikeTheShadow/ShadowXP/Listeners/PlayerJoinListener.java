@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class PlayerJoinListener implements Listener
 {
     @EventHandler
-    public void PlayerJoinEvent(PlayerJoinEvent event)
+    public void playerJoinEvent(PlayerJoinEvent event)
     {
         Player player = event.getPlayer();
         //Add player to database if they don't exist

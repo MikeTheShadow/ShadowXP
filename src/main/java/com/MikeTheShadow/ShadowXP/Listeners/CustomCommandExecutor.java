@@ -107,7 +107,7 @@ public class CustomCommandExecutor implements CommandExecutor
             ShadowXP.config.update();
             for (CustomUser user: customUsers)
             {
-                UpdateServerUser(user);
+                updateServerUser(user);
             }
             return true;
         }
@@ -119,7 +119,7 @@ public class CustomCommandExecutor implements CommandExecutor
             {
                 CustomUser user = DBHandler.GetUserByID(target.getUniqueId().toString());
                 user.setTotalXP(Integer.parseInt(args[1]));
-                target.setLevel(UpdateServerUser(user));
+                target.setLevel(updateServerUser(user));
                 return true;
             }
             else
@@ -127,7 +127,7 @@ public class CustomCommandExecutor implements CommandExecutor
                 OfflinePlayer offPlayer = Bukkit.getOfflinePlayer(args[0]);
                 CustomUser user = DBHandler.GetUserByID(offPlayer.getUniqueId().toString());
                 user.setTotalXP(Integer.parseInt(args[1]));
-                UpdateServerUser(user);
+                updateServerUser(user);
             }
             return true;
         }
@@ -151,7 +151,7 @@ public class CustomCommandExecutor implements CommandExecutor
             }
             else { ID = Bukkit.getOfflinePlayer(args[0]).getUniqueId().toString(); }
             CustomUser user = DBHandler.GetUserByID(ID);
-            UpdateUserLevel(user,Integer.parseInt(args[1]),isOnline);
+            updateUserLevel(user,Integer.parseInt(args[1]),isOnline);
             return true;
         }
         //ADD EXPERIENCE
@@ -169,7 +169,7 @@ public class CustomCommandExecutor implements CommandExecutor
                 xpToAdd = Math.round(bonus * xpToAdd);
                 user.addTotalXP(xpToAdd);
                 user.addXP(xpToAdd);
-                UpdateServerUser(user,xpToAdd);
+                updateServerUser(user,xpToAdd);
             }
             catch (Exception e)
             {
@@ -194,7 +194,7 @@ public class CustomCommandExecutor implements CommandExecutor
         return false;
     }
 
-    public void UpdateUserLevel(CustomUser user,int setLevel,boolean isOnline)
+    public void updateUserLevel(CustomUser user, int setLevel, boolean isOnline)
     {
         user.setTotalXP(0);
         user.setXP(0);
@@ -205,7 +205,7 @@ public class CustomCommandExecutor implements CommandExecutor
              finalXP += config.getInt("levels." + i);
         }
         user.setTotalXP(finalXP);
-        UpdateServerUser(user);
+        updateServerUser(user);
         DBHandler.UpdateCustomUser(user);
         if(isOnline)
         {
@@ -213,7 +213,7 @@ public class CustomCommandExecutor implements CommandExecutor
         }
     }
 
-    public int UpdateServerUser(CustomUser user)
+    public int updateServerUser(CustomUser user)
     {
         Json config = ShadowXP.config;
         int totalXP = user.getTotalXP();
@@ -246,7 +246,7 @@ public class CustomCommandExecutor implements CommandExecutor
         }
         return level;
     }
-    public int UpdateServerUser(CustomUser user,int amount)
+    public int updateServerUser(CustomUser user, int amount)
     {
         Json config = ShadowXP.config;
         int totalXP = user.getTotalXP();

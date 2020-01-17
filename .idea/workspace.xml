@@ -14,6 +14,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -22,6 +25,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1VujMZJAVBzbD7FseqNzUEytxYH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -29,6 +33,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ChestCommandsExtra" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -111,10 +116,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="960" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1578127057339" />
-    <state x="950" y="130" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578126233466">
+    <state x="950" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579242772097">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="950" y="130" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1578126233466" />
+    <state x="950" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579242772097" />
     <state x="979" y="460" key="FileChooserDialogImpl" timestamp="1579218930129">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
