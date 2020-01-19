@@ -22,7 +22,7 @@ public class PlayerAttacksListener implements Listener
     {
         if (!(event.getDamager() instanceof Player && event.getEntity() instanceof Player)) return;
 
-        int levelDif = ShadowXP.config.getInt("settings.levelDifference");
+        int levelDif = ShadowXP.levelConfig.getInt("settings.levelDifference");
         //WORLDGUARD BS
         Location loc = event.getEntity().getLocation();
         WorldGuardPlugin worldGuardPlugin =  WorldGuardPlugin.getPlugin(WorldGuardPlugin.class);
@@ -40,7 +40,7 @@ public class PlayerAttacksListener implements Listener
         if(playersInDuel(att,def)) return;
         if(Math.abs(attacker.getLevel() - defender.getLevel()) >= levelDif)
         {
-            att.sendMessage(ShadowXP.config.getString("settings.attackMessage"));
+            att.sendMessage(ShadowXP.levelConfig.getString("settings.attackMessage"));
             event.setDamage(0);
             event.setCancelled(true);
         }

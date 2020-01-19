@@ -4,7 +4,7 @@ main: com.MikeTheShadow.ShadowXP.ShadowXP
 api-version: 1.13
 authors: [MikeTheShadow]
 description: Modifies the XP leveling system to create a unique leveling system
-depend: [WorldGuard,XPBoost,Vault]
+depend: [WorldGuard,XPBoost,Vault,Duels]
 commands:
   userstats:
     description: Gets yours/a users current stats.

@@ -52,10 +52,10 @@ public class CustomCommandExecutor implements CommandExecutor
             builder.append(StringUtils.repeat(" ",10 - (user.getName().length()/2)));
             builder.append("§6").append(user.getName()).append("\n").append("\n \n");
             //experience information if user is max level do not display information
-            if(ShadowXP.config.getInt("levels." + (user.getLevel() + 1))  != 0 )
+            if(ShadowXP.levelConfig.getInt("levels." + (user.getLevel() + 1))  != 0 )
             {
                 builder.append("§3Level: ").append(user.getLevel()).append("\n \n");
-                builder.append("§2Current Experience: §a").append(user.getCurrentXP()).append("§e/§a").append(ShadowXP.config.getInt("levels." + user.getLevel())).append("\n \n");
+                builder.append("§2Current Experience: §a").append(user.getCurrentXP()).append("§e/§a").append(ShadowXP.levelConfig.getInt("levels." + user.getLevel())).append("\n \n");
             }
             else
             {
@@ -85,10 +85,10 @@ public class CustomCommandExecutor implements CommandExecutor
             builder.append(StringUtils.repeat(" ",10 - (user.getName().length()/2)));
             builder.append("§6").append(user.getName()).append("\n").append("\n \n");
             //experience information if user is max level do not display information
-            if(ShadowXP.config.getInt("levels." + (user.getLevel() + 1))  != 0 )
+            if(ShadowXP.levelConfig.getInt("levels." + (user.getLevel() + 1))  != 0 )
             {
                 builder.append("§3Level: ").append(user.getLevel()).append("\n \n");
-                builder.append("§2Current Experience: §a").append(user.getCurrentXP()).append("§e/§a").append(ShadowXP.config.getInt("levels." + user.getLevel())).append("\n \n");
+                builder.append("§2Current Experience: §a").append(user.getCurrentXP()).append("§e/§a").append(ShadowXP.levelConfig.getInt("levels." + user.getLevel())).append("\n \n");
             }
             else
             {
@@ -104,7 +104,7 @@ public class CustomCommandExecutor implements CommandExecutor
         else if (cmd.getName().equalsIgnoreCase("fixexperience"))
         {
             List<CustomUser> customUsers = DBHandler.getAllUsers();
-            ShadowXP.config.update();
+            ShadowXP.levelConfig.update();
             for (CustomUser user: customUsers)
             {
                 updateServerUser(user);
@@ -134,7 +134,7 @@ public class CustomCommandExecutor implements CommandExecutor
         else if (cmd.getName().equalsIgnoreCase("setlevel"))
         {
             if(warnUser(args,sender)) return false;
-            Json config = ShadowXP.config;
+            Json config = ShadowXP.levelConfig;
             int levelXP = config.getInt("levels." + args[1]);
             if(levelXP == 0)
             {
@@ -173,7 +173,8 @@ public class CustomCommandExecutor implements CommandExecutor
             }
             catch (Exception e)
             {
-                Bukkit.getServer().getConsoleSender().sendMessage("Error adding experience check that values are correct!" + e.getMessage());
+                Bukkit.getServer().getConsoleSender().sendMessage("Error adding experience check that values are correct!");
+                e.printStackTrace();
                 return false;
             }
             return true;
@@ -198,7 +199,7 @@ public class CustomCommandExecutor implements CommandExecutor
     {
         user.setTotalXP(0);
         user.setXP(0);
-        Json config = ShadowXP.config;
+        Json config = ShadowXP.levelConfig;
         int finalXP = 0;
         for(int i = 0; i < setLevel;i++)
         {
@@ -215,7 +216,7 @@ public class CustomCommandExecutor implements CommandExecutor
 
     public int updateServerUser(CustomUser user)
     {
-        Json config = ShadowXP.config;
+        Json config = ShadowXP.levelConfig;
         int totalXP = user.getTotalXP();
         int levelXP = config.getInt("levels.1");
         int level = 1;
@@ -248,7 +249,7 @@ public class CustomCommandExecutor implements CommandExecutor
     }
     public int updateServerUser(CustomUser user, int amount)
     {
-        Json config = ShadowXP.config;
+        Json config = ShadowXP.levelConfig;
         int totalXP = user.getTotalXP();
         int levelXP = config.getInt("levels.1");
         int level = 1;
@@ -277,10 +278,36 @@ public class CustomCommandExecutor implements CommandExecutor
         {
             target.setLevel(user.getLevel());
             target.setExp(0);
-            target.sendMessage(ShadowXP.config.get("settings.experience").toString().replace("%","" + amount));
+            target.sendMessage(ShadowXP.levelConfig.get("settings.experience").toString().replace("%","" + amount));
             if(user.getLevel() == startingLevel) return level;
-            target.sendMessage(ShadowXP.config.get("settings.levelup").toString().toString().replace("%","" + user.getLevel()));
+            //if they leveled up run the commands for that level
+            runLevelUpCommands(user,level);
+            target.sendMessage(ShadowXP.levelConfig.get("settings.levelup").toString().toString().replace("%","" + user.getLevel()));
         }
         return level;
     }
+
+    public static void runLevelUpCommands(CustomUser user,int level)
+    {
+        int id = 1;
+        String command =replaceTagsWithInformation(user,level,id);
+        while(command != null)
+        {
+            id++;
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),command);
+            command = replaceTagsWithInformation(user,level,id);
+        }
+    }
+
+    public static String replaceTagsWithInformation(CustomUser user,int level,int id)
+    {
+        Json levelConf = ShadowXP.levelConfig;
+        String command = levelConf.getString(level + "." + id);
+        if(command == null) return null;
+        command = command.replaceAll("%level%",user.getLevel() + "");
+        command = command.replaceAll("%username%",user.getName());
+        return command;
+    }
+
+
 }

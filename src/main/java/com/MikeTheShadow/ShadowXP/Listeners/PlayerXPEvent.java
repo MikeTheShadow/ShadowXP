@@ -19,7 +19,7 @@ public class PlayerXPEvent implements Listener
         Player player = event.getPlayer();
         CustomUser user = DBHandler.getUserByID(player.getUniqueId().toString());
         if(user == null) { Bukkit.getConsoleSender().sendMessage("Error! Cannot get user: " + player.getName());return; }
-        Json config = ShadowXP.config;
+        Json config = ShadowXP.levelConfig;
         int amount = event.getAmount();
         event.setAmount(0);
         //set player data
@@ -35,7 +35,7 @@ public class PlayerXPEvent implements Listener
             //get the xp required for the next level
             int nextLevelXP = config.getInt("levels." + currentLevel);
             //tell player they gained XP
-            player.sendMessage(ShadowXP.config.get("settings.experience").toString().replace("%","" + amount));
+            player.sendMessage(ShadowXP.levelConfig.get("settings.experience").toString().replace("%","" + amount));
             //check xp events
             if(user.getCurrentXP() + amount >= nextLevelXP)
             {
@@ -45,8 +45,9 @@ public class PlayerXPEvent implements Listener
                 //update level
                 user.addLevel(1);
                 //save user
-                player.sendMessage(ShadowXP.config.get("settings.levelup").toString().toString().replace("%","" + user.getLevel()));
+                player.sendMessage(ShadowXP.levelConfig.get("settings.levelup").toString().toString().replace("%","" + user.getLevel()));
                 player.setLevel(user.getLevel());
+                CustomCommandExecutor.runLevelUpCommands(user,player.getLevel());
             }
             else
             {

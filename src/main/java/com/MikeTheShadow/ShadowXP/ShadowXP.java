@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ShadowXP extends JavaPlugin
 {
-    public static Json config;
+    public static Json levelConfig;
     public static String DBName;
 
     public static Duels duelsApi;
@@ -22,36 +22,27 @@ public class ShadowXP extends JavaPlugin
     @Override
     public void onEnable()
     {
+        loadLevelConfig();
         //load those sweet deps
         duelsApi = (Duels) Bukkit.getServer().getPluginManager().getPlugin("Duels");
-        config = new Json("config", this.getDataFolder().getPath());
-        config.setDefault("levels.1", 100);
-        config.setDefault("levels.2", 200);
-        config.setDefault("levels.3", 300);
-        config.setDefault("levels.4", 400);
-        config.setDefault("levels.5", 500);
-        config.setDefault("levels.6", 600);
-        config.setDefault("levels.7", 700);
-        config.setDefault("levels.8", 800);
-
-        expansion = new XPBoostExpansion();
-        expansion.canRegister();
-
-        config.setDefault("settings.experience","§8You gained §a % §8experience!");
-        config.setDefault("settings.levelup","§6You leveled up to level %!");
-        config.setDefault("settings.DatabaseName","userBase");
-        config.setDefault("settings.attackMessage", "§6The level difference is too high!");
-        config.setDefault("settings.levelDifference", 5);
-        DBName = config.getString("settings.DatabaseName")+ ".sqlite";
+        DBName = levelConfig.getString("settings.DatabaseName")+ ".sqlite";
         DBHandler.createDatabase();
         DBHandler.createUserTable();
-
         //register listeners
         PluginManager pluginManager = Bukkit.getServer().getPluginManager();
         pluginManager.registerEvents(new PlayerJoinListener(), this);
         pluginManager.registerEvents(new PlayerXPEvent(), this);
         pluginManager.registerEvents(new PlayerAttacksListener(),this);
         //command register
+        registerCommands();
+    }
+    @Override
+    public void onDisable()
+    {
+
+    }
+    public void registerCommands()
+    {
         this.getCommand("mystats").setExecutor(new CustomCommandExecutor(this));
         this.getCommand("userstats").setExecutor(new CustomCommandExecutor(this));
         this.getCommand("fixexperience").setExecutor(new CustomCommandExecutor(this));
@@ -59,10 +50,29 @@ public class ShadowXP extends JavaPlugin
         this.getCommand("setlevel").setExecutor(new CustomCommandExecutor(this));
         this.getCommand("addexperience").setExecutor(new CustomCommandExecutor(this));
     }
-    @Override
-    public void onDisable()
-    {
 
+    public void loadLevelConfig()
+    {
+        levelConfig = new Json("config", this.getDataFolder().getPath());
+        //basic level stuff
+        levelConfig.setDefault("levels.1", 100);
+        levelConfig.setDefault("levels.2", 200);
+        levelConfig.setDefault("levels.3", 300);
+        levelConfig.setDefault("levels.4.", 400);
+        levelConfig.setDefault("levels.5.", 500);
+
+        levelConfig.setDefault("2.1","broadcast leveled %username% to level %level%");
+        levelConfig.setDefault("2.2","broadcast you need more experience to level up!");
+        levelConfig.setDefault("3.1","broadcast leveled %username% to level 2");
+        levelConfig.setDefault("3.2","broadcast this is a second command woot!");
+        expansion = new XPBoostExpansion();
+        expansion.canRegister();
+
+        levelConfig.setDefault("settings.experience","§8You gained §a % §8experience!");
+        levelConfig.setDefault("settings.levelup","§6You leveled up to level %!");
+        levelConfig.setDefault("settings.DatabaseName","userBase");
+        levelConfig.setDefault("settings.attackMessage", "§6The level difference is too high!");
+        levelConfig.setDefault("settings.levelDifference", 5);
     }
 
 
