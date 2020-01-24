@@ -20,7 +20,6 @@ public class PlayerJoinListener implements Listener
             DBHandler.insertNewUser(player.getName(),player.getUniqueId().toString(),1,0,0);
             user = DBHandler.getUserByID(player.getUniqueId().toString());
         }
-        player.setLevel(user.getLevel() + 1);
         player.setLevel(user.getLevel());
         player.setExp(0);
     }
