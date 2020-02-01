@@ -1,9 +1,6 @@
 package com.MikeTheShadow.ShadowXP;
 
-import com.MikeTheShadow.ShadowXP.Listeners.CustomCommandExecutor;
-import com.MikeTheShadow.ShadowXP.Listeners.PlayerAttacksListener;
-import com.MikeTheShadow.ShadowXP.Listeners.PlayerJoinListener;
-import com.MikeTheShadow.ShadowXP.Listeners.PlayerXPEvent;
+import com.MikeTheShadow.ShadowXP.Listeners.*;
 import com.MikeTheShadow.ShadowXP.Util.CustomUser;
 import com.MikeTheShadow.ShadowXP.Util.DBHandler;
 import com.MikeTheShadow.ShadowXP.Util.XPBoostExpansion;
@@ -35,6 +32,7 @@ public class ShadowXP extends JavaPlugin
         pluginManager.registerEvents(new PlayerJoinListener(), this);
         pluginManager.registerEvents(new PlayerXPEvent(), this);
         pluginManager.registerEvents(new PlayerAttacksListener(),this);
+        pluginManager.registerEvents(new ModifyPlayerDamageEvent(),this);
         //command register
         registerCommands();
     }
