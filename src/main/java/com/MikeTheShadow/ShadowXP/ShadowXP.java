@@ -4,11 +4,13 @@ import com.MikeTheShadow.ShadowXP.Listeners.CustomCommandExecutor;
 import com.MikeTheShadow.ShadowXP.Listeners.PlayerAttacksListener;
 import com.MikeTheShadow.ShadowXP.Listeners.PlayerJoinListener;
 import com.MikeTheShadow.ShadowXP.Listeners.PlayerXPEvent;
+import com.MikeTheShadow.ShadowXP.Util.CustomUser;
 import com.MikeTheShadow.ShadowXP.Util.DBHandler;
 import com.MikeTheShadow.ShadowXP.Util.XPBoostExpansion;
 import de.leonhard.storage.Json;
 import me.realized.duels.api.Duels;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -39,7 +41,12 @@ public class ShadowXP extends JavaPlugin
     @Override
     public void onDisable()
     {
-
+        for (Player player: Bukkit.getOnlinePlayers())
+        {
+            CustomUser user = DBHandler.getUserByID(player.getUniqueId().toString());
+            user.setLastHP((int)player.getHealth());
+            DBHandler.updateCustomUser(user);
+        }
     }
     public void registerCommands()
     {

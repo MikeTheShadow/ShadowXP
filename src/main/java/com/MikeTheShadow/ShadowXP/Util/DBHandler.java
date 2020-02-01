@@ -64,7 +64,8 @@ public class DBHandler
                 + "    UID text NOT NULL,\n"
                 + "    level integer NOT NULL,\n"
                 + "    currentXP integer NOT NULL,\n"
-                + "    totalXP integer NOT NULL\n"
+                + "    totalXP integer NOT NULL,\n"
+                + "    lastHP integer NOT NULL"
                 + ");";
 
         try (Connection conn = connect();
@@ -78,9 +79,9 @@ public class DBHandler
             Bukkit.getConsoleSender().sendMessage(e.getMessage());
         }
     }
-    public static void insertNewUser(String name, String UID, int level, int currentXP, int totalXP)
+    public static void insertNewUser(String name, String UID, int level, int currentXP, int totalXP,int lastHP)
     {
-        String sql = "INSERT INTO Users(name,UID,level,currentXP,totalXP) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO Users(name,UID,level,currentXP,totalXP,lastHP) VALUES(?,?,?,?,?,?)";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql))
         {
@@ -89,6 +90,7 @@ public class DBHandler
             pstmt.setInt(3, level);
             pstmt.setInt(4, currentXP);
             pstmt.setInt(5, totalXP);
+            pstmt.setInt(6,lastHP);
             pstmt.executeUpdate();
         }
         catch (SQLException e)
@@ -99,7 +101,7 @@ public class DBHandler
 
     public static CustomUser getUserByID(String UUID)
     {
-        String sql = "SELECT name,UID,level,currentXP,totalXP "
+        String sql = "SELECT name,UID,level,currentXP,totalXP,lastHP "
                 + "FROM Users WHERE UID = ?";
 
         try (Connection conn = connect();
@@ -113,7 +115,7 @@ public class DBHandler
             // loop through the result set
             while (rs.next())
             {
-                return new CustomUser(rs.getString("name"),rs.getString("UID"),rs.getInt("level"),rs.getInt("currentXP"),rs.getInt("totalXP"));
+                return new CustomUser(rs.getString("name"),rs.getString("UID"),rs.getInt("level"),rs.getInt("currentXP"),rs.getInt("totalXP"),rs.getInt("lastHP"));
             }
         }
         catch (SQLException e)
@@ -126,7 +128,8 @@ public class DBHandler
     {
         String sql = "UPDATE Users SET level = ? , "
                 + "currentXP = ? ,"
-                + "totalXP = ? "
+                + "totalXP = ? ,"
+                + "lastHP = ? "
                 + "WHERE UID = ?";
 
         try (Connection conn = connect();
@@ -137,7 +140,8 @@ public class DBHandler
             pstmt.setInt(1, user.level);
             pstmt.setInt(2, user.currentXP);
             pstmt.setInt(3, user.totalXP);
-            pstmt.setString(4, user.UID);
+            pstmt.setInt(4,user.lastHP);
+            pstmt.setString(5, user.UID);
             // update
             pstmt.executeUpdate();
         }
@@ -148,7 +152,7 @@ public class DBHandler
     }
     public static List<CustomUser> getAllUsers()
     {
-        String sql = "SELECT name,UID,level,currentXP,totalXP "
+        String sql = "SELECT name,UID,level,currentXP,totalXP,lastHP "
                 + "FROM Users";
 
         try (Connection conn = connect();
@@ -159,7 +163,7 @@ public class DBHandler
             List<CustomUser> returnList = new ArrayList<>();
             while (rs.next())
             {
-                 returnList.add(new CustomUser(rs.getString("name"),rs.getString("UID"),rs.getInt("level"),rs.getInt("currentXP"),rs.getInt("totalXP")));
+                 returnList.add(new CustomUser(rs.getString("name"),rs.getString("UID"),rs.getInt("level"),rs.getInt("currentXP"),rs.getInt("totalXP"),rs.getInt("lastHP")));
             }
             return returnList;
         }

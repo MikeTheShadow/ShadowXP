@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fa4fce20-f0ac-4eca-93ae-23dd2679f856" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Listeners/PlayerJoinListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/ShadowXP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/ShadowXP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Util/CustomUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Util/CustomUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Util/DBHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/MikeTheShadow/ShadowXP/Util/DBHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,23 +129,31 @@
       <option name="project" value="LOCAL" />
       <updated>1579471822317</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Cleanup">
+      <created>1579896183265</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579896183265</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated naming convention" />
     <MESSAGE value="Added level up commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added level up commands" />
+    <MESSAGE value="Cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup" />
   </component>
   <component name="WindowStateProjectService">
     <state x="872" y="377" key="#Project_Structure" timestamp="1578110012950">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="872" y="377" key="#Project_Structure/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1578110012950" />
-    <state x="1085" y="428" key="#com.intellij.ide.util.MemberChooser" timestamp="1578123562627">
+    <state x="1085" y="428" key="#com.intellij.ide.util.MemberChooser" timestamp="1580577762784">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="1085" y="428" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1578123562627" />
+    <state x="1085" y="428" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1580577762784" />
     <state x="960" y="455" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578127057339">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -151,38 +162,38 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="950" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579242772097" />
-    <state x="912" y="315" key="CommitChangelistDialog2" timestamp="1579471821847">
+    <state x="912" y="315" key="CommitChangelistDialog2" timestamp="1579896182823">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="912" y="315" key="CommitChangelistDialog2/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579471821847" />
+    <state x="912" y="315" key="CommitChangelistDialog2/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579896182823" />
     <state x="979" y="460" key="FileChooserDialogImpl" timestamp="1579218930129">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="979" y="460" key="FileChooserDialogImpl/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579218930129" />
-    <state width="2517" height="413" key="GridCell.Tab.0.bottom" timestamp="1579587950855">
+    <state width="2517" height="413" key="GridCell.Tab.0.bottom" timestamp="1580580128101">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.bottom/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579587950855" />
-    <state width="2517" height="413" key="GridCell.Tab.0.center" timestamp="1579587950855">
+    <state width="2517" height="413" key="GridCell.Tab.0.bottom/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1580580128101" />
+    <state width="2517" height="413" key="GridCell.Tab.0.center" timestamp="1580580128100">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.center/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579587950855" />
-    <state width="2517" height="413" key="GridCell.Tab.0.left" timestamp="1579587950855">
+    <state width="2517" height="413" key="GridCell.Tab.0.center/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1580580128100" />
+    <state width="2517" height="413" key="GridCell.Tab.0.left" timestamp="1580580128100">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.left/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579587950855" />
-    <state width="2517" height="413" key="GridCell.Tab.0.right" timestamp="1579587950855">
+    <state width="2517" height="413" key="GridCell.Tab.0.left/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1580580128100" />
+    <state width="2517" height="413" key="GridCell.Tab.0.right" timestamp="1580580128100">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="413" key="GridCell.Tab.0.right/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579587950855" />
+    <state width="2517" height="413" key="GridCell.Tab.0.right/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1580580128100" />
     <state x="760" y="293" key="SettingsEditor" timestamp="1578900553699">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="760" y="293" key="SettingsEditor/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1578900553699" />
-    <state x="662" y="332" key="new project wizard" timestamp="1579214387752">
+    <state x="604" y="430" key="new project wizard" timestamp="1580358390659">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="662" y="332" key="new project wizard/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1579214387752" />
+    <state x="604" y="430" key="new project wizard/0.0.2560.1440/2560.0.1280.1024@0.0.2560.1440" timestamp="1580358390659" />
     <state x="986" y="349" key="refactoring.ChangeSignatureDialog" timestamp="1578199221663">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
